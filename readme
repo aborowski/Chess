@@ -1,0 +1,19 @@
+Autor Andrzej Borowski I4, 109719
+
+Instrukcja kompilacji: wystarczy make, makefile dostępny
+
+Instrukcja uruchomienia: Najlepiej uruchomić na początku plik serwer (skompilowany o takiej nazwie), po czym uruchamiać pliki klient, i w nich wpisać odpowiedni podany klucz kolejki serwera.
+
+Potem zgodnie z instrukcjami tworzyć graczy, wiazac ich w gry, dołaczac obserwatorów.
+
+Najlepiej stworzyć gracza, który będzie nasłuchiwał, po czym stworzyć gracza wybierającego, dzięki czemu można będzie stworzyć rozgrywkę.
+Potem można tworzyć obserwatorów, gdyż będą oni widzieć rozgrywki dopiero po utworzeniu ich. Piony nie posiadają zaprogramowanych ruchów, gracz powinien wiedzieć jaki pionek jak może sie poruszać.
+
+Gra kończy się gdy któryś z graczy wyjdzie, lub gdy któryś z graczy zbije króla przeciwnika.
+
+Serwer wyłączamy poprzez wpisanie "Q".
+
+
+Plik serwer.c zawiera wszystkie funkcje serwera, wewnątrz jednej funckji main, aczkolwiek podzielone na fragmenty wykonywane przez poszczególne procesy (if(fork()) rozdziela funkcje na te fragmeny). Osobno jest tylko funkcja inicjująca szachownice oraz operacje semaforowe (wraz ze strukturą).
+
+Plik klient.c zawiera funkcjonalność gracza oraz obserwatora, która wykonuje zależnie od wyboru użytkownika. Między innymi jest tam funkcja rysująca szachownicę.
